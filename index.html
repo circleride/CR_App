@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+<meta name="author" content="CircleRide">
+<title>CircleRide - &iexcl;Jam&aacute;s Viajes Solo!</title>
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="mobile-web-app-capable" content="yes"><meta name="theme-color" content="#218BC4">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#303F9F">
+<meta name="apple-mobile-web-app-title" content="CircleRide"><meta name="apple-mobile-web-app-status-bar-style" content="#218BC4">
+<meta name="msapplication-TileColor" content="#218BC4"><meta name="msapplication-navbutton-color" content="#218BC4">
+<link href="https://app.circleride.mx/vendors_old/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
+<link href="https://app.circleride.mx/vendors_old/bower_components/animate.css/animate.min.css" rel="stylesheet">
+<link href="https://app.circleride.mx/vendors_old/bower_components/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
+<link href="https://app.circleride.mx/vendors_old/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+<link href="https://app.circleride.mx/vendors_old/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+<link href="https://app.circleride.mx/vendors_old/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<link href="https://app.circleride.mx/css/app_1.min_old.css" rel="stylesheet">
+<link href="https://app.circleride.mx/css/app_2.min_old.css" rel="stylesheet">
+<link href="https://app.circleride.mx/css/estilos_old.css?time=1508352780" rel="stylesheet">
+<script src="https://app.circleride.mx/vendors_old/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&region=mx&language=es&lang=es&libraries=places,geometry,visualization&key=AIzaSyBFv28V5hnPyu2EY8iem6bs6WE5DQwA-No"></script>
+<script src="https://app.circleride.mx/js/jquery.are-you-sure.js"></script>
+<script src="https://app.circleride.mx/js/jquery.geocomplete.min.js"></script>
+<script src="https://app.circleride.mx/js/header_web.php?1508352780"></script>
+<script src="https://use.fontawesome.com/625e6d8f9f.js"></script>
+</head>
+<body>
+<header id="header" class="clearfix" data-ma-theme="blue">
+<ul class="h-inner">
+<li class="hi-logo hidden-xs_">
+<a href="https://app.circleride.mx/"><img src="https://app.circleride.mx/img/Logo_White.png" border="0" style="max-height:35px;" alt="CircleRide"></a>
+</li>
+<li class="pull-right header_menu_top">
+<ul class="hi-menu hidden-xs">
+<li><a href="https://app.circleride.mx/"><span class="him-label">Registro</span></a></li>
+<li><a href="https://app.circleride.mx/"><span class="him-label">Iniciar Sesi&oacute;n</span></a></li>
+</ul>
+<style>
+@media (min-width: 1280px){
+#content:not(.content-alt){ padding-left: 15px !important;  padding-right: 15px !important; }
+#footer { padding-left: 0 !important; }
+}
+</style>
+</ul>
+</li>
+</ul>
+
+<div class="h-search-wrap">
+<div class="hsw-inner">
+<i class="hsw-close zmdi zmdi-close" data-ma-action="search-close"></i>
+<input type="text" name="q" placeholder="Buscar usuarios">
+</div>
+</div>
+</header>
+<section id="main">
+<section id="content">
+<div class="container">
+<div class="card z-depth-2">
+
+<div class="card-body">
+<div class="row row_custom">
+<div class="col-sm-12 col-md-7 index_img_people hidden-xs hidden-sm" align="center">
+<div class="">&nbsp;</div>
+</div>
+<div class="col-sm-12 col-md-5 index_content_people">
+<h1 class="text-center text-primary" style="">Entra y Comienza tu Viaje con CircleRide</h1>
+<br>
+<h4 class="text-center text-primary">Puedes conectarte usando</h4>
+<div class="row">
+
+<div class="col-xs-6" align="left"><a href="https://app.circleride.mx/apps/hybridauth/sn/Google?start=1" class="btn bgm-red waves-effect btn-lg"><i class="zmdi zmdi-google zmdi-hc-fw"></i> Google</a></div>
+<div class="col-xs-6" align="right"><a href="https://app.circleride.mx/apps/hybridauth/sn/Facebook?start=1" class="btn bgm-indigo waves-effect btn-lg"><i class="zmdi zmdi-facebook zmdi-hc-fw"></i> Facebook</a></div>
+</div>
+
+<br>
+<h4 class="text-center text-primary">O ingresa con tus datos registrados anteriormente</h4>
+<form role="form" action="https://app.circleride.mx/ajax.process_form.php" id="source_login">
+<input type="hidden" name="action" value="login">
+<div class="form-group fg-line">
+<label for="exampleInputEmail1" class="text-primary">Ingresa tu email</label>
+<input type="text" class="form-control input-sm" id="exampleInputEmail1" placeholder="" required name="email">
+</div>
+<div class="form-group fg-line">
+<label for="exampleInputPassword1" class="text-primary">Ingresa tu contraseña	</label>
+<input type="password" class="form-control input-sm" id="exampleInputPassword1" placeholder="" required name="password">
+</div>
+<div class="" id="response_login" align="center">&nbsp;</div>
+<div class="row">
+<div class="col-sm-6" align="left">
+<p><button type="submit" class="btn btn-primary" id="submit_login">Conectar</button></p>
+</div>
+<div class="col-sm-6" align="left">
+<p><a href="https://app.circleride.mx/" class="">¿Olvidaste tu password?	</a>
+<br>
+<a href="https://app.circleride.mx/" class="">¿Aún no tienes cuenta?	</a></p>
+</div>
+</div>
+<input type="hidden" name="return" value="">
+<input type="hidden" name="Lat" class="User_Lat">
+<input type="hidden" name="Lon" class="User_Lon">
+<input type="hidden" name="key" class="User_Key">
+<input type="hidden" name="Geo_Aprox" class="Geo_Aprox">
+</form>
+<br>
+<script type="text/javascript">
+$(document).ready(function(){
+$("#source_login").submit(function(e) {
+e.preventDefault();
+$('#submit_login').prop("disabled", true);
+$("#response_login").html("<div class='alert_ alert-info_'><i class='fa fa-cog fa-spin'></i></div>");
+var postData_login = $(this).serializeArray();
+var formURL_login = $(this).attr("action");
+$.ajax({
+url: formURL_login,
+type: "POST",
+data: postData_login
+}).done(function(data, textStatus, jqXHR) {
+$("#response_login").html("" + data);
+}).fail(function(jqXHR, textStatus, errorThrown) {
+$("#response_login").html('Lo sentimos, pero sus datos no pudieron ser procesados.<br>' + jqXHR. statusText);
+}).always(function() {
+$('#submit_login').prop("disabled", false);
+});
+});
+});
+</script>
+</div>
+</div>
+<script>
+$(document).ready(function() {
+//var height = (-50) + $(window).height();
+function resize_index(){ var height = (0) + $(".index_content_people").height(); $('.index_img_people').css('height',height); }
+resize_index();
+$(window).resize(function() { resize_index(); });
+});
+</script>
+<div class="row row_custom bgm-indigo" style="padding-top: 10px; padding-bottom: 10px;">
+<div class="col-md-2" align="center">
+<img src="https://app.circleride.mx/img/Index_Paso1.png?0" class="img-responsive" style="max-width:130px">
+</div>
+<div class="col-md-2" style="color: #ffffff; vertical-align: middle;">
+<h4 style="color: #ffffff;"><b>Registrate</b></h4>
+<p><b>Crea tu cuenta a trav&eacute;s de tu correo electr&oacute;nico o una red social. Es muy r&aacute;pido y sencillo.</b></p>
+</div>
+<div class="col-md-2" align="center">
+<img src="https://app.circleride.mx/img/Index_Paso2.png?0" class="img-responsive" style="max-width:130px">
+</div>
+<div class="col-md-2" style="color: #ffffff; vertical-align: middle;">
+<h4 style="color: #ffffff;"><b>Crea tu Viaje</b></h4>
+<p><b>Puedes participar como conductor o pasajero en la modalidad de viaje p&uacute;blico o privado.</b></p>
+</div>
+<div class="col-md-2" align="center">
+<img src="https://app.circleride.mx/img/Index_Paso3.png?0" class="img-responsive" style="max-width:130px">
+</div>
+<div class="col-md-2" style="color: #ffffff; vertical-align: middle;">
+<h4 style="color: #ffffff;"><b>&iexcl;Comparte los Beneficios!</b></h4>
+<p><b>Haz de tu viaje una experiencia m&aacute;s divertida reduciendo gastos y emisiones de CO2</b></p>
+</div>
+</div>
+</div>
+</div>
+<div align="center">
+
+<div class="fb-page" data-href="https://www.facebook.com/CircleRide" data-tabs="biografia" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/CircleRide" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/CircleRide">CircleRide</a></blockquote></div>
+</div>
+<br>
+<div class="card">
+<div class="card-header z-depth-2 Index_Beneficios">
+<div align="center">
+<h1 class="text-primary">Disfruta de los beneficios</h1>
+
+</div>
+<div class="row">
+<div class="col-sm-6" align="right">
+<img src="https://app.circleride.mx/img/beneficios/beneficios_1.png" class="img-responsive">
+</div>
+<div class="col-sm-6" align="left">
+<img src="https://app.circleride.mx/img/beneficios/beneficios_2.png" class="img-responsive">
+</div>
+<div class="col-sm-6" align="right">
+<img src="https://app.circleride.mx/img/beneficios/beneficios_3.png" class="img-responsive">
+</div>
+<div class="col-sm-6" align="left">
+<img src="https://app.circleride.mx/img/beneficios/beneficios_4.png" class="img-responsive">
+</div>
+<div class="col-sm-6" align="right">
+<img src="https://app.circleride.mx/img/beneficios/beneficios_5.png" class="img-responsive">
+</div>
+<div class="col-sm-6" align="left">
+<img src="https://app.circleride.mx/img/beneficios/beneficios_6.png" class="img-responsive">
+</div>
+</div>
+<br>
+<br>
+<div class="row">
+<div class="col-sm-8"></div>
+<div class="col-sm-4">
+<div class="alert alert-success" align="center">
+<a href="#" class="alert-link">CircleRide en tu Organizaci&oacute;n</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+index_default_.php
+</section>
+<br>
+<footer id="footer">
+<div style="margin-top: 2.0em; margin-bottom: 2.0em;">
+<a href="https://www.facebook.com/CircleRide" target="_blank" alt="Siguenos en Facebook" title="Siguenos en Facebook"><img src="https://app.circleride.mx/img/social/facebook-128.png" width="35"></a> &nbsp;
+<a href="https://twitter.com/CircleRide" target="_blank" alt="Siguenos en Twitter" title="Siguenos en Twitter"><img src="https://app.circleride.mx/img/social/twitter-128.png" width="35"></a> &nbsp;
+<a href="https://plus.google.com/+CirclerideCom?rel=author" target="_blank" rel="publisher" alt="Siguenos en Google+" title="Siguenos en Google+"><img src="https://app.circleride.mx/img/social/googleplus-128.png" width="35"></a> &nbsp;
+</div>
+<b>
+<ul class="f-menu">
+<li><a href="https://app.circleride.mx/">Inicio</a></li>
+<li><a href="https://app.circleride.mx/">Qui&eacute;nes Somos</a></li>
+<li><a href="https://app.circleride.mx/">Pol&iacute;ticas de Uso</a></li>
+<li><a href="https://app.circleride.mx/">Preguntas Frecuentes</a></li>
+<li><a href="https://app.circleride.mx/">Aviso de Privacidad</a></li>
+<li><a href="https://app.circleride.mx/">Contacto</a></li>
+</ul>
+</b>
+<b>CircleRide &copy; 2017</b>
+<br>
+<div class="live_session"></div>
+</footer>
+
+<div class="page-loader">
+<div class="preloader pls-blue">
+<svg class="pl-circular" viewBox="25 25 50 50">
+<circle class="plc-path" cx="50" cy="50" r="20" />
+</svg>
+<p>Cargando...</p>
+</div>
+</div>
+
+<!--[if lt IE 9]>
+<div class="ie-warning">
+<h1 class="c-white">Warning!!</h1>
+<p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+<div class="iew-container">
+<ul class="iew-download">
+<li>
+<a href="http://www.google.com/chrome/">
+<img src="img/browsers/chrome.png" alt="">
+<div>Chrome</div>
+</a>
+</li>
+<li>
+<a href="https://www.mozilla.org/en-US/firefox/new/">
+<img src="img/browsers/firefox.png" alt="">
+<div>Firefox</div>
+</a>
+</li>
+<li>
+<a href="http://www.opera.com">
+<img src="img/browsers/opera.png" alt="">
+<div>Opera</div>
+</a>
+</li>
+<li>
+<a href="https://www.apple.com/safari/">
+<img src="img/browsers/safari.png" alt="">
+<div>Safari</div>
+</a>
+</li>
+<li>
+<a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+<img src="img/browsers/ie.png" alt="">
+<div>IE (New)</div>
+</a>
+</li>
+</ul>
+</div>
+<p>Sorry for the inconvenience!</p>
+</div>
+<![endif]-->
+
+
+<script src="https://app.circleride.mx/vendors_old/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="https://app.circleride.mx/js/hover-dropdown.min.js"></script>
+<script src="https://app.circleride.mx/js/jquery.mobile-events.min.js"></script>
+<script src="https://app.circleride.mx/vendors_old/bower_components/flot/jquery.flot.js"></script>
+<script src="https://app.circleride.mx/vendors_old/bower_components/flot/jquery.flot.resize.js"></script>
+<script src="https://app.circleride.mx/vendors_old/bower_components/flot.curvedlines/curvedLines.js"></script>
+<script src="https://app.circleride.mx/vendors_old/sparklines/jquery.sparkline.min.js"></script>
+<script src="https://app.circleride.mx/vendors_old/bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+<script src="https://app.circleride.mx/vendors_old/bower_components/moment/min/moment.min.js"></script>
+<script src="https://app.circleride.mx/vendors_old/bower_components/moment/min/es.js?2"></script>
+<script>moment.locale('es');</script>
+<script src="https://app.circleride.mx/vendors_old/bower_components/fullcalendar/dist/fullcalendar.min.js "></script>
+<script src="https://app.circleride.mx/vendors_old/bower_components/simpleWeather/jquery.simpleWeather.min.js"></script>
+<script src="https://app.circleride.mx/vendors_old/bower_components/Waves/dist/waves.min.js"></script>
+<script src="https://app.circleride.mx/vendors_old/bootstrap-growl/bootstrap-growl.min.js"></script>
+<script src="https://app.circleride.mx/vendors_old/bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+<script src="https://app.circleride.mx/vendors_old/bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="https://app.circleride.mx/vendors_old/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+<script src="https://app.circleride.mx/vendors_old/bower_components/nouislider/distribute/nouislider.min.js"></script>
+<script src="https://app.circleride.mx/vendors_old/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<script src="https://app.circleride.mx/js/flot-charts/curved-line-chart.js"></script>
+<script src="https://app.circleride.mx/js/flot-charts/line-chart.js"></script>
+<script src="https://app.circleride.mx/js/charts.js"></script>
+
+<!--[if IE 9 ]>
+<script src="https://app.circleride.mx/vendors_old/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+<![endif]-->
+<script src="https://app.circleride.mx/js/functions.js"></script>
+<script src="https://app.circleride.mx/js/app.min.js?time=1508352780"></script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=172813152908703";
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+</body>
+</html>
