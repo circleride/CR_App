@@ -28,7 +28,7 @@ a = "/_/" + a;
 }
 console.log("Cargando URL: %c" + a), $.ajax({
 "type": "GET",
-"url": a,
+"url": url_server + a,
 "dataType": "html",
 "cache": 0,
 "beforeSend": function () {
