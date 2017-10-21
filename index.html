@@ -81,13 +81,13 @@
 </header>
 <aside class="sidebar">
 <div class="scrollbar-inner div_user_menu">
-...
+<div align="center"><i class="fa fa-lock" aria-hidden="true"></i></div>
 </div>
 </aside>
 <section class="content">
 
 <div class="content_main">
-<div class="row"><div class="col-md-12"><div class="card"><div class="card-header"><h2 class="card-title">Inicio</h2><small class="card-subtitle"></small></div><div class="card-block">
+<div class="row"><div class="col-md-12"><div class="card"><div class="card-header"><h2 class="card-title">Bienvenid@... Un momento <i class="fa fa-refresh fa-spin"></i></h2><small class="card-subtitle"></small></div><div class="card-block">
 <h1 class="text-center text-info"></h1>
 </div></div></div></div>
 </div>
@@ -135,6 +135,7 @@ receivedEvent: function(id){  }
 };
 app.initialize();
 
+
 window.onOnline = function onOnline(handle){
 if(handle) {  } else { handle = window.handle_url; }
 var token_push = window.localStorage.getItem("token_push");
@@ -143,10 +144,10 @@ var User_Lon = window.localStorage.getItem("User_Lon");
 var geo_aprox = window.localStorage.getItem("geo_aprox");
 $.ajaxSetup({ async:true, cache: true });
 $.getScript(window.url_server+'/movil/api.get_script.php?id_cliente='+window.id_cliente+'&key='+window.my_uuid+'&token_push=' + window.localStorage.getItem('token_push')+'&device='+JSON.stringify(device) + '&lat='+User_Lat + '&lon='+User_Lon + '&geo_aprox='+geo_aprox+'&handle_url='+JSON.stringify(handle)+'&is_app=1', function(){
-$(".content_main").html("<div class='main-content'><div align='center'><i class='fa fa-cog fa-spin'></i></div></div>");
+//$(".content_main").html("<div class='main-content'><div align='center'><i class='fa fa-cog fa-spin'></i></div></div>");
 window.div_user_menu();
 });
-$(".content_main").ajaxError(function( e, jqxhr, settings, exception ) {
+$(".content_main").ajaxError(function( e, jqxhr, settings, exception ){
 $(this).prepend("No se pudo enlazar con el servidor.<br>" + e + "<br>"+jqxhr);
 });
 };

@@ -112,11 +112,10 @@ $(".navigation-trigger, .sidebar").removeClass("toggled"); $(".ma-backdrop").rem
 };
 
 window.div_user_menu = function (){
-$(".div_user_menu").html('<div align="center"><br><br><h4><i class="fa fa-spinner fa-spin"></i></h4><br></div>');
+$(".div_user_menu").html('<div align="center"><i class="fa fa-lock" aria-hidden="true"></i></div>');
 $.getJSON(window.url_server+"/movil/html.templates.php", { key: window.my_uuid, html: 'div_user_menu', view_as: 'json', is_app: '1' }, function (j) {
 var stateObj = { html: page };
 var data_html = j['content'];
-$(".content_main").html(data_html);
-$(".navigation-trigger, .sidebar").removeClass("toggled"); $(".ma-backdrop").remove();
+$(".div_user_menu").html(data_html);
 });
 };
