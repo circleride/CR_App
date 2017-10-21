@@ -99,16 +99,24 @@ window.enable_gallery();
 });
 
 window.url_target = function url_target(page,id){
-var imei = window.localStorage.getItem("imei");
 if(id == "undefined" || id == null || id == ""){ id = ""; }
 if(page == "undefined" || page == null || page == ""){ page = ""; }
 //alert(page+" : "+id);
-$('.ajax-content').html('<div align="center"><br><br><h4><i class="fa fa-spinner fa-spin"></i></h4><br></div>');
-$.getJSON(window.url_server+"/movil/html.templates.php", { key: window.my_uuid, imei: imei, html: page, id: id, view_as: 'json', is_app: '1' }, function (j) {
+$('.content_main').html('<div align="center"><br><br><h4><i class="fa fa-spinner fa-spin"></i></h4><br></div>');
+$.getJSON(window.url_server+"/movil/html.templates.php", { key: window.my_uuid, html: page, id: id, view_as: 'json', is_app: '1' }, function (j) {
 var stateObj = { html: page };
 var data_html = j['content'];
-$(".ajax-content").html(data_html);
-$("body").removeClass("aside-toggled");
+$(".content_main").html(data_html);
+$(".navigation-trigger, .sidebar").removeClass("toggled"); $(".ma-backdrop").remove();
 });
+};
 
+window.div_user_menu = function (){
+$(".div_user_menu").html('<div align="center"><br><br><h4><i class="fa fa-spinner fa-spin"></i></h4><br></div>');
+$.getJSON(window.url_server+"/movil/html.templates.php", { key: window.my_uuid, html: 'div_user_menu', view_as: 'json', is_app: '1' }, function (j) {
+var stateObj = { html: page };
+var data_html = j['content'];
+$(".content_main").html(data_html);
+$(".navigation-trigger, .sidebar").removeClass("toggled"); $(".ma-backdrop").remove();
+});
 };
