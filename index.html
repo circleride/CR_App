@@ -61,6 +61,7 @@
 <a class="col-4 app-shortcuts__item" href="#extras/"><i class="zmdi zmdi-view-headline bg-orange"></i><small class="">Blog</small></a>
 <a class="col-4 app-shortcuts__item" href="#extras/"><i class="zmdi zmdi-trending-up bg-blue-grey"></i><small class="">Reportes</small></a>
 </div></div></li>
+
 <li class="dropdown top-nav__notifications">
 <a href="javascript:void(0);" data-toggle="dropdown" class="top-nav__notify click_get_notificaciones"><i class="zmdi zmdi-notifications"></i></a>
 <div class="dropdown-menu dropdown-menu-right dropdown-menu--block">
@@ -77,6 +78,7 @@
 <div class="listview__scroll scrollbar-inner update_get_mensajes">
 <a href="#" class="listview__item"><div class="listview__content"><div class="listview__heading">Cargando...</div><p>Espere un momento... <i class="fa fa-refresh fa-spin"></i></p></div></a>
 </div><div class="p-1"></div></div></div></li>
+
 </ul>
 </header>
 <aside class="sidebar">
@@ -134,7 +136,7 @@ ActivateOnline();
 receivedEvent: function(id){  }
 };
 app.initialize();
-$('.content_main').load(window.url_server + '/_/index');
+//$('.content_main').load(window.url_server + '/_/index');
 
 window.onOnline = function onOnline(handle){
 if(handle) {  } else { handle = window.handle_url; }
