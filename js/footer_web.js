@@ -47,6 +47,8 @@ b.html('<h5 class="ajax-loading-error"><i class="fa fa-warning txt-color-orangeD
 })
 }
 
+$(document).ready(function (){
+
 $.navAsAjax && ($(".navigation").length && checkURL(), $(document).on("click", 'a[href!="#"]', function (a) {
 //a.preventDefault();
 var b = $(a.currentTarget);
@@ -56,6 +58,8 @@ window.setTimeout(function(){
 }), $(window).on("hashchange", function () {
 checkURL();
 }));
+
+});
 
 jsArray = {};
 function loadScript(a, b) {
