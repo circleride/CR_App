@@ -123,21 +123,8 @@ $(".open_modal_nuevo").on('click', function(){ $(".modal-content").html('<div al
 </main>
 
 <script type="text/javascript" charset="ISO-8859-1">
-
 jQuery(document).ready(function($){ });
-var app = {
-initialize: function(){ this.bindEvents(); },
-bindEvents: function(){ document.addEventListener('deviceready', this.onDeviceReady, false); },
-onDeviceReady: function(){
-app.receivedEvent('deviceready');
-localStorage.setItem("info_device", JSON.stringify(device));
-ActivateOnline();
-},
-receivedEvent: function(id){  }
-};
-app.initialize();
-//$('.content_main').load(window.url_server + '/_/index');
-
+device = {};
 window.onOnline = function onOnline(handle){
 if(handle) {  } else { handle = window.handle_url; }
 var token_push = window.localStorage.getItem("token_push");
@@ -172,6 +159,21 @@ location = "index.html";
 }
 navigator.notification.confirm('¿Esta seguro?', onConfirm,'Esta por borrar sus datos', ['Si','No'] );
 };
+
+var app = {
+initialize: function(){ this.bindEvents(); },
+bindEvents: function(){ document.addEventListener('deviceready', this.onDeviceReady, false); },
+onDeviceReady: function(){
+app.receivedEvent('deviceready');
+//localStorage.setItem("info_device", JSON.stringify(device));
+ActivateOnline();
+},
+receivedEvent: function(id){  }
+};
+app.initialize();
+
+ActivateOnline();
+//$('.content_main').load(window.url_server + '/_/index');
 </script>
 
 <script type="text/javascript">

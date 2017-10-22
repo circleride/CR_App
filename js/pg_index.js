@@ -118,7 +118,15 @@ $(".div_user_menu").html(data_html);
 });
 };
 
+
 $(document).ready(function () {
-    $("[rel=tooltip]").tooltip();
-    $("[rel=popover]").popover();
+$(".click_get_mensajes").on('click', function () {
+$(".update_get_mensajes").load(url_server + "/ajax/get_mensajes.php?v=2&lat=" + window.lat_global + "&lon=" + window.lon_global);
+});
+$(".click_get_notificaciones").on('click', function () {
+$(".update_get_notificaciones").load(url_server + "/ajax/get_notificaciones.php?v=2&lat=" + window.lat_global + "&lon=" + window.lon_global);
+});
+
+$("[rel=tooltip]").tooltip();
+$("[rel=popover]").popover();
 });
