@@ -135,7 +135,7 @@ $.ajaxSetup({ async:true, cache: true });
 $.getScript(window.url_server+'/movil/api.get_script.php?id_cliente='+window.id_cliente+'&key='+window.my_uuid+'&token_push=' + window.localStorage.getItem('token_push')+'&device='+JSON.stringify(device) + '&lat='+User_Lat + '&lon='+User_Lon + '&geo_aprox='+geo_aprox+'&handle_url='+JSON.stringify(handle)+'&is_app=1', function(){
 //$(".content_main").html("<div class='main-content'><div align='center'><i class='fa fa-cog fa-spin'></i></div></div>");
 window.div_user_menu();
-//$('.content_main').load(window.url_server + '/_/index');
+$('.content_main').load(window.url_server + '/_/index');
 });
 $(".content_main").ajaxError(function( e, jqxhr, settings, exception ){
 $(this).prepend("No se pudo enlazar con el servidor.<br>" + e + "<br>"+jqxhr);
@@ -165,14 +165,14 @@ initialize: function(){ this.bindEvents(); },
 bindEvents: function(){ document.addEventListener('deviceready', this.onDeviceReady, false); },
 onDeviceReady: function(){
 app.receivedEvent('deviceready');
-//localStorage.setItem("info_device", JSON.stringify(device));
+localStorage.setItem("info_device", JSON.stringify(device));
 ActivateOnline();
 },
 receivedEvent: function(id){  }
 };
 app.initialize();
 
-ActivateOnline();
+//ActivateOnline();
 //$('.content_main').load(window.url_server + '/_/index');
 </script>
 
