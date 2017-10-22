@@ -59,19 +59,6 @@ localStorage.setItem('my_uuid', my_uuid_def);
 window.my_uuid = my_uuid;
 }
 
-window.enable_geocomplete = function enable_geocomplete(target) {
-if(target){ } else { target = ".Direccion"; }
-$(target).geocomplete({
-details: "form",
-types: ["geocode", "establishment"],
-detailsAttribute: "data-geo"
-});
-$(target).bind("geocode:dragged", function(event, latLng){
-$("input[name=Lat]").val(latLng.lat());
-$("input[name=Lon]").val(latLng.lng());
-});
-};
-
 window.handle_url = "";
 function handleOpenURL(url){
 setTimeout(function() {
@@ -117,7 +104,6 @@ var data_html = j['content'];
 $(".div_user_menu").html(data_html);
 });
 };
-
 
 $(document).ready(function () {
 $(".click_get_mensajes").on('click', function () {
