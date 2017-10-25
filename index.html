@@ -55,12 +55,10 @@
 
 <a href="index.html"><img src="img/Logo_White.png" border="0" style="max-height:35px;" alt="CircleRide"></a>
 </div>
+
 <ul class="top-nav">
-<li class="dropdown hidden-xs-down"><a href="" data-toggle="dropdown"><i class="zmdi zmdi-apps"></i></a><div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu"><div class="row app-shortcuts">
-<a class="col-4 app-shortcuts__item" href="#extras/"><i class="zmdi zmdi-calendar bg-red"></i><small class="">Calendario</small></a>
-<a class="col-4 app-shortcuts__item" href="#extras/"><i class="zmdi zmdi-view-headline bg-orange"></i><small class="">Blog</small></a>
-<a class="col-4 app-shortcuts__item" href="#extras/"><i class="zmdi zmdi-trending-up bg-blue-grey"></i><small class="">Reportes</small></a>
-</div></div></li>
+
+<li class="dropdown hidden-xs-down div_extras_header" style="display: none;"></li>
 
 <li class="dropdown top-nav__notifications" style="display: none;">
 <a href="javascript:void(0);" data-toggle="dropdown" class="top-nav__notify click_get_notificaciones"><i class="zmdi zmdi-notifications"></i></a>
@@ -138,6 +136,7 @@ $.ajaxSetup({ async:true, cache: true });
 $.getScript(window.url_server+'/movil/api.get_script.php?id_cliente='+window.id_cliente+'&key='+window.my_uuid+'&token_push=' + window.localStorage.getItem('token_push')+'&device='+JSON.stringify(device) + '&lat='+User_Lat + '&lon='+User_Lon + '&geo_aprox='+geo_aprox+'&handle_url='+JSON.stringify(handle)+'&is_app=1', function(){
 //$(".content_main").html("<div class='main-content'><div align='center'><i class='fa fa-cog fa-spin'></i></div></div>");
 window.div_user_menu();
+window.div_extras_header();
 $('.content_main').load(window.url_server + '/_/index');
 });
 $(".content_main").ajaxError(function( e, jqxhr, settings, exception ){
