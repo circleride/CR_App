@@ -52,7 +52,6 @@ CircleRide.Com
 <plugin name="cordova-plugin-file" />
 <plugin name="cordova-plugin-file-transfer" />
 <plugin name="cordova-plugin-geolocation" />
-<plugin name="cordova-plugin-globalization" />
 <plugin name="cordova-plugin-inappbrowser" />
 <plugin name="cordova-plugin-media" />
 <plugin name="cordova-plugin-network-information" />
@@ -63,6 +62,11 @@ CircleRide.Com
 <plugin name="cordova-plugin-android-permissions"/>
 <plugin name="cordova-plugin-imei"/>
 
+<plugin name="cordova-plugin-geolocation">
+<variable name="GEOLOCATION_USAGE_DESCRIPTION" value="Posicionamiento en el Mapa" />
+</plugin>
+
+<gap:plugin name="cordova-plugin-x-toast" source="npm" />
 <gap:plugin name="cordova-plugin-customurlscheme" source="npm">
 <param name="URL_SCHEME" value="circleride" />
 </gap:plugin>
