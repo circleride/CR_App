@@ -20,8 +20,9 @@
 <link rel="stylesheet" href="vendors/bower_components/select2/dist/css/select2.min.css">
 <link rel="stylesheet" href="vendors/bower_components/lightgallery/dist/css/lightgallery.min.css">
 <link rel="stylesheet" href="css/app.min.css">
-<link href="css/estilos.css?t=1508358693" rel="stylesheet">
-<script src="https://use.fontawesome.com/625e6d8f9f.js"></script>
+<link href="css/estilos.css" rel="stylesheet">
+<link href="css/font-awesome.min.css" rel="stylesheet">
+<!--<script src="https://use.fontawesome.com/625e6d8f9f.js"></script>-->
 
 <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="vendors/bower_components/lightgallery/dist/js/lightgallery.min.js"></script>
@@ -152,22 +153,30 @@ $(".msj_footer").html('<div class="alert alert-danger alert-dismissible fade sho
 '</div>');
 //$(".msj_footer").html("<div align='center'><br><a href='index.html' class='btn btn-danger btn-lg btn-block'><i class='fa fa-thumbs-down' aria-hidden='true'></i> Sin conexi&oacute;n a la red.</a></div>");
 window.plugins.toast.showWithOptions({
-message: "Sin conexión a la red",
-duration: "long", // 2000 ms
-position: "bottom",
-styling: {
-opacity: 0.75,
-backgroundColor: '#404040',
-textColor: '#FFFFFF',
+message: "Sin conexión a la red", duration: "long", position: "bottom",
+styling: { opacity: 0.75, backgroundColor: '#404040', textColor: '#FFFFFF',
 textSize: 18, // Default is approx. 13.
 cornerRadius: 16, // minimum is 0 (square). iOS default 20, Android default 100
 horizontalPadding: 20, // iOS default 16, Android default 50
-verticalPadding: 16 // iOS default 12, Android default 30
+verticalPadding: 16 // iOS default 12, Android default 30 */
+}
+});
+}
+function Remove_onOffline() {
+$(".msj_footer").html('');
+window.plugins.toast.showWithOptions({
+message: "Con conexión a la red", duration: "long", position: "bottom",
+styling: { opacity: 0.75, backgroundColor: '#404040', textColor: '#FFFFFF',
+textSize: 18, // Default is approx. 13.
+cornerRadius: 16, // minimum is 0 (square). iOS default 20, Android default 100
+horizontalPadding: 20, // iOS default 16, Android default 50
+verticalPadding: 16 // iOS default 12, Android default 30 */
 }
 });
 }
 
 document.addEventListener("offline", onOffline, false);
+document.addEventListener("online", Remove_onOffline, false);
 function ActivateOnline(){ window.onOnline(); }
 
 window.BorrarLS = function BorrarLS(){
