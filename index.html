@@ -138,7 +138,7 @@ $.getScript(window.url_server+'/movil/api.get_script.php?id_cliente='+window.id_
 //$(".content_main").html("<div class='main-content'><div align='center'><i class='fa fa-cog fa-spin'></i></div></div>");
 window.div_user_menu();
 window.div_extras_header();
-$('.content_main').load(window.url_server + '/_/index?is_app=1&app_online=1&key='+window.my_uuid);
+$('.content_main').load(window.url_server + '/_/index?is_app=1&app_online=1&key='+window.my_uuid+'&id_cliente='+window.id_cliente);
 });
 $(".content_main").ajaxError(function( e, jqxhr, settings, exception ){
 $(this).prepend("No se pudo enlazar con el servidor.<br>" + e + "<br>"+jqxhr);
