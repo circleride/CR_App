@@ -99,7 +99,6 @@ window.url_target = function url_target(url) {
 window.div_user_menu = function (){
 $(".div_user_menu").html('<div align="center"><i class="fa fa-lock" aria-hidden="true"></i></div>');
 $.getJSON(window.url_server+"/movil/html.templates.php", { key: window.my_uuid, html: 'div_user_menu', view_as: 'json', is_app: '1' }, function (j) {
-var stateObj = { html: page };
 var data_html = j['content'];
 $(".div_user_menu").html(data_html);
 });
@@ -107,7 +106,6 @@ $(".div_user_menu").html(data_html);
 window.div_extras_header = function (){
 $(".div_extras_header").html('<div align="center"><i class="fa fa-lock" aria-hidden="true"></i></div>');
 $.getJSON(window.url_server+"/movil/html.templates.php", { key: window.my_uuid, html: 'div_extras_header', view_as: 'json', is_app: '1' }, function (j) {
-var stateObj = { html: page };
 var data_html = j['content'];
 $(".div_extras_header").html(data_html);
 });
