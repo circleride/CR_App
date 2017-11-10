@@ -125,15 +125,9 @@ $("[rel=popover]").popover();
 
 function PushOn(){
 var push = PushNotification.init({
-	android: {
-        senderID: 38913838556
-	},
-	ios: {
-		alert: "true",
-		badge: "true",
-		sound: "true"
-	},
-	windows: {}
+"android": { "senderID": "38913838556" },
+"ios": { "alert": "true", "badge": "true", "sound": "true", "clearBadge": "true" },
+"windows": {  }
 });
 push.on('registration', function(data){
 // data.registrationId
