@@ -163,22 +163,33 @@ verticalPadding: 16 // iOS default 12, Android default 30 */
 }
 });
 }
-function Remove_onOffline() {
-$(".msj_footer").html('');
-/*
-window.plugins.toast.showWithOptions({
-message: "Con conexión a la red", duration: "long", position: "bottom",
-styling: { opacity: 0.75, backgroundColor: '#404040', textColor: '#FFFFFF',
-textSize: 18, // Default is approx. 13.
-cornerRadius: 16, // minimum is 0 (square). iOS default 20, Android default 100
-horizontalPadding: 20, // iOS default 16, Android default 50
-verticalPadding: 16 // iOS default 12, Android default 30
-}}); */
-}
+function Remove_onOffline() { $(".msj_footer").html(''); }
 
 document.addEventListener("offline", onOffline, false);
 document.addEventListener("online", Remove_onOffline, false);
 function ActivateOnline(){ window.onOnline(); }
+
+var app = {
+initialize: function(){ this.bindEvents(); },
+bindEvents: function(){ document.addEventListener('deviceready', this.onDeviceReady, false); },
+onDeviceReady: function(){
+app.receivedEvent('deviceready');
+localStorage.setItem("info_device", JSON.stringify(device));
+app.setupPush();
+ActivateOnline();
+},
+setupPush: function() {
+var push = PushNotification.init({ "android": { "senderID": "38913838556" }, "ios": { alert: "true", badge: "true", sound: "true", clearBadge: "true" }, "windows": {  } });
+push.on('registration', function(data){ var oldRegId = localStorage.getItem('registrationId'); if (oldRegId !== data.registrationId) { localStorage.setItem('registrationId', data.registrationId); window.localStorage.setItem("token_push", JSON.stringify(data)); } });
+push.on('error', function(e){  });
+push.on('notification', function(data){ if(typeof GetPushNotif == 'function') { window.GetPushNotif(data); } else { window.GetPushNotif = data; } });
+},
+receivedEvent: function(id){  }
+};
+app.initialize();
+
+//ActivateOnline();
+//$('.content_main').load(window.url_server + '/_/index?is_app=1&app_online=1&key='+window.my_uuid);
 
 window.BorrarLS = function BorrarLS(){
 function onConfirm(buttonIndex) {
@@ -192,30 +203,6 @@ location = "index.html";
 navigator.notification.confirm('¿Esta seguro?', onConfirm,'Esta por borrar sus datos', ['Si','No'] );
 };
 
-var app = {
-initialize: function(){ this.bindEvents(); },
-bindEvents: function(){ document.addEventListener('deviceready', this.onDeviceReady, false); },
-onDeviceReady: function(){
-app.receivedEvent('deviceready');
-localStorage.setItem("info_device", JSON.stringify(device));
-app.setupPush();
-ActivateOnline();
-},
-setupPush: function() {
-var push = PushNotification.init({ "android": { "senderID": "38913838556" }, "ios": { alert: "true", badge: "true", sound: "true", clearBadge: "true" }, "windows": {  } });
-push.on('registration', function(data) { var oldRegId = localStorage.getItem('registrationId'); if (oldRegId !== data.registrationId) { localStorage.setItem('registrationId', data.registrationId); window.localStorage.setItem("token_push", JSON.stringify(data)); } });
-push.on('error', function(e){  });
-push.on('notification', function(data) { if(typeof GetPushNotif == 'function') { window.GetPushNotif(data); } else { window.GetPushNotif = data; } });
-},
-receivedEvent: function(id){  }
-};
-app.initialize();
-
-//ActivateOnline();
-//$('.content_main').load(window.url_server + '/_/index?is_app=1&app_online=1&key='+window.my_uuid);
-</script>
-
-<script type="text/javascript">
 $(document).ready(function(){
 $("#source_form").submit(function(e) { e.preventDefault(); $('#submit_form').prop("disabled", true);
 $("#response_form").html("<div class='alert_ alert-info_'><i class='fa fa-cog fa-spin'></i></div>");
