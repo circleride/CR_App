@@ -122,3 +122,33 @@ $(".update_get_notificaciones").load(url_server + "/ajax/get_notificaciones.php?
 $("[rel=tooltip]").tooltip();
 $("[rel=popover]").popover();
 });
+
+function PushOn(){
+var push = PushNotification.init({
+	android: {
+        senderID: 38913838556
+	},
+	ios: {
+		alert: "true",
+		badge: "true",
+		sound: "true"
+	},
+	windows: {}
+});
+push.on('registration', function(data){
+// data.registrationId
+});
+push.on('notification', function(data){
+// data.message,
+// data.title,
+// data.count,
+// data.sound,
+// data.image,
+// data.additionalData
+});
+push.on('error', function(e){
+// e.message
+});
+alert("End Push App");
+}
+document.addEventListener('deviceready', PushOn, false);
