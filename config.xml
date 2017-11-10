@@ -71,7 +71,7 @@ CircleRide.Com
 <param name="URL_SCHEME" value="circleride" />
 </gap:plugin>
 
-<plugin name="phonegap-plugin-push" source="npm">
+<plugin name="phonegap-plugin-push" spec="~2.0.0" source="npm">
 <param name="SENDER_ID" value="38913838556" />
 </plugin>
 
