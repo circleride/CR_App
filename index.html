@@ -179,28 +179,6 @@ verticalPadding: 16 // iOS default 12, Android default 30
 document.addEventListener("offline", onOffline, false);
 document.addEventListener("online", Remove_onOffline, false);
 function ActivateOnline(){ window.onOnline(); }
-function PushOn(){
-var push = PushNotification.init({
-"android": { "senderID": "38913838556" },
-"ios": { "alert": "true", "badge": "true", "sound": "true", "clearBadge": "true" },
-"windows": {  }
-});
-push.on('registration', function(data){
-// data.registrationId
-});
-push.on('notification', function(data){
-// data.message,
-// data.title,
-// data.count,
-// data.sound,
-// data.image,
-// data.additionalData
-});
-push.on('error', function(e){
-// e.message
-});
-alert("End Push App");
-}
 
 window.BorrarLS = function BorrarLS(){
 function onConfirm(buttonIndex) {
@@ -220,35 +198,14 @@ bindEvents: function(){ document.addEventListener('deviceready', this.onDeviceRe
 onDeviceReady: function(){
 app.receivedEvent('deviceready');
 localStorage.setItem("info_device", JSON.stringify(device));
-ActivateOnline();
 app.setupPush();
+ActivateOnline();
 },
 setupPush: function() {
-var push = PushNotification.init({ "android": { "senderID": "38913838556" },
-"ios": {
-alert: "true",
-badge: "true",
-sound: "true",
-clearBadge: "true"
-}, "windows": {}
-});
-
-push.on('registration', function(data) {
-var oldRegId = localStorage.getItem('registrationId');
-if (oldRegId !== data.registrationId) {
-localStorage.setItem('registrationId', data.registrationId);
-window.localStorage.setItem("token_push", JSON.stringify(data));
-}
-});
+var push = PushNotification.init({ "android": { "senderID": "38913838556" }, "ios": { alert: "true", badge: "true", sound: "true", clearBadge: "true" }, "windows": {  } });
+push.on('registration', function(data) { var oldRegId = localStorage.getItem('registrationId'); if (oldRegId !== data.registrationId) { localStorage.setItem('registrationId', data.registrationId); window.localStorage.setItem("token_push", JSON.stringify(data)); } });
 push.on('error', function(e){  });
-push.on('notification', function(data) {
-if(typeof GetPushNotif == 'function') {
-window.GetPushNotif(data);
-} else {
-window.GetPushNotif = data;
-}
-});
-alert("End Push App");
+push.on('notification', function(data) { if(typeof GetPushNotif == 'function') { window.GetPushNotif(data); } else { window.GetPushNotif = data; } });
 },
 receivedEvent: function(id){  }
 };
