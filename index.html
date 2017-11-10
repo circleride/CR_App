@@ -179,6 +179,28 @@ verticalPadding: 16 // iOS default 12, Android default 30
 document.addEventListener("offline", onOffline, false);
 document.addEventListener("online", Remove_onOffline, false);
 function ActivateOnline(){ window.onOnline(); }
+function PushOn(){
+var push = PushNotification.init({
+"android": { "senderID": "38913838556" },
+"ios": { "alert": "true", "badge": "true", "sound": "true", "clearBadge": "true" },
+"windows": {  }
+});
+push.on('registration', function(data){
+// data.registrationId
+});
+push.on('notification', function(data){
+// data.message,
+// data.title,
+// data.count,
+// data.sound,
+// data.image,
+// data.additionalData
+});
+push.on('error', function(e){
+// e.message
+});
+alert("End Push App");
+}
 
 window.BorrarLS = function BorrarLS(){
 function onConfirm(buttonIndex) {
