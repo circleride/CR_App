@@ -199,6 +199,7 @@ onDeviceReady: function(){
 app.receivedEvent('deviceready');
 localStorage.setItem("info_device", JSON.stringify(device));
 ActivateOnline();
+PushOn();
 },
 receivedEvent: function(id){  }
 };

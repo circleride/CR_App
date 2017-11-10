@@ -151,4 +151,3 @@ push.on('error', function(e){
 });
 alert("End Push App");
 }
-document.addEventListener('deviceready', PushOn, false);
